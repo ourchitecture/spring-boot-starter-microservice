@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>ourchitecture</groupId>
+	<artifactId>spring-boot-starter-microservice</artifactId>
+	<!--<version>0.0.3-SNAPSHOT</version>-->
+	<version>0.1.0.RELEASE</version>
+	<packaging>jar</packaging>
+
+	<name>ourchitecture-spring-boot-starter-microservice</name>
+	<description>Spring Boot Starter for Microservices</description>
+	<url>https://github.com/ourchitecture/spring-boot-starter-microservice</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<spring.boot.version>1.5.3.RELEASE</spring.boot.version>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!-- HTTP and Web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- Health and Management -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- HTTP and Service Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- API Key Security -->
+		<dependency>
+			<groupId>ourchitecture</groupId>
+			<artifactId>spring-boot-starter-security-apikey</artifactId>
+			<version>0.1.0.RELEASE</version>
+		</dependency>
+		<!-- Microsoft Application Insights for Azure Deployments -->
+		<dependency>
+			<groupId>ourchitecture</groupId>
+			<artifactId>spring-boot-starter-appinsights</artifactId>
+			<version>0.1.0.RELEASE</version>
+		</dependency>
+		<!-- JSON Queries for Adaptive Request/Response Modeling -->
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+		</dependency>
+
+		<!--
+			RUNTIME
+		-->
+		
+		<!-- Developer Tooling -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<!--
+			TEST
+		-->
+		
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies> <!-- The parent should provide all that -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>ourchitecture-maven</id>
+			<url>https://packagecloud.io/ourchitecture/maven/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<extensions>
+			<extension>
+			<groupId>io.packagecloud.maven.wagon</groupId>
+			<artifactId>maven-packagecloud-wagon</artifactId>
+			<version>0.0.4</version>
+			</extension>
+		</extensions>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>packagecloud-ourchitecture</id>
+			<url>packagecloud+https://packagecloud.io/ourchitecture/maven/ourchitecture-spring-boot-starter-microservice</url>
+		</repository>
+		<snapshotRepository>
+			<id>packagecloud-ourchitecture</id>
+			<url>packagecloud+https://packagecloud.io/ourchitecture/maven/ourchitecture-spring-boot-starter-microservice</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
